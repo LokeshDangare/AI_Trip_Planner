@@ -54,4 +54,9 @@ Go to trip --> Go to Script --> Copy the path of activate.bat --> paste it to cm
 uv pip install langchain
 ```
 
+##### Install the requirements
+```
+uv pip install -r requirements.txt
+```
+
 
