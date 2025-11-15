@@ -26,7 +26,7 @@ class WeatherInfoTool:
         @tool
         def get_weather_forecast(city: str) -> str:
             """Get a weather forecast for a city"""
-            forecast_data = self.weather_service.get_weather_forecast(city)
+            forecast_data = self.weather_service.get_forecast_weather(city)
             if forecast_data and 'list' in forecast_data:
                 forecast_summary = []
                 for i in range(len(forecast_data['list'])):

@@ -59,4 +59,8 @@ uv pip install langchain
 uv pip install -r requirements.txt
 ```
 
+To load a main.py file, Execute below command in seperate cmd terminal before running streamlit_app.py file
+```
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+``` 
 

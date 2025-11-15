@@ -19,10 +19,10 @@ class Calculator:
     @staticmethod
     def calculate_total(*x: float) -> float:
         """
-        Calculate sum of given list of numbers.
+        Calculate sum of the given list of numbers
 
         Args:
-            x(list): List of floating numbers.
+            x (list): List of floating numbers
 
         Returns:
             float: The sum of numbers in the list x
