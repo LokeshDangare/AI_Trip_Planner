@@ -39,11 +39,24 @@ if submit_button and user_input.strip():
 
         if response.status_code == 200:
             answer = response.json().get("answer", "No answer returned.")
+
+            # Extract the direct text content, removing any wrapper like {'type': 'text', 'text': ...}
+            if isinstance(answer, list) and len(answer) > 0:
+                item = answer[0]
+                if isinstance(item, dict) and 'text' in item:
+                    direct_answer = item['text']
+                else:
+                    direct_answer = str(item)  # Fallback if not a dict with 'text'
+            elif isinstance(answer, dict) and 'text' in answer:
+                direct_answer = answer['text']
+            else:
+                direct_answer = str(answer)  # Fallback for plain string or other formats
+        
             markdown_content = f""" # 🌎 AI Travel Plan
 
             ---
 
-            {answer}
+            {direct_answer}
 
             ---
 

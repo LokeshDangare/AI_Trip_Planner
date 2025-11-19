@@ -1,9 +1,12 @@
 import os
 from dotenv import load_dotenv
+load_dotenv()
 from typing import Any, Literal, Optional
 from pydantic import BaseModel, Field 
 from utils.config_loader import load_config
-from langchain_groq import ChatGroq
+#from langchain_groq import ChatGroq
+from google import genai
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 
 class ConfigLoader:
@@ -15,7 +18,7 @@ class ConfigLoader:
         return self.config[key]
 
 class ModelLoader(BaseModel):
-    model_provider: Literal["groq"] = "groq"
+    model_provider: Literal["genai"] = "genai"
     config: Optional[ConfigLoader] = Field(default=None, exclude=True)
 
     def model_post_init(self, __context: Any) -> None:
@@ -30,10 +33,11 @@ class ModelLoader(BaseModel):
         """
         print("LLM loading...")
         print(f"loading model from provider: {self.model_provider}")
-        self.model_provider == "groq"
-        print("Loading LLM from Groq...........")
-        groq_api_key = os.getenv("GROQ_API_KEY")
-        model_name = self.config["llm"]["groq"]["model_name"]
-        llm = ChatGroq(model = model_name, api_key = groq_api_key)
+        self.model_provider == "genai"
+        print("Loading LLM from Gemini...........")
+        #groq_api_key = os.getenv("GROQ_API_KEY")
+        google_api_key = os.getenv("GOOGLE_API_KEY")
+        model_name = self.config["llm"]["genai"]["model_name"]
+        llm = ChatGoogleGenerativeAI(model = model_name, api_key = google_api_key)
 
         return llm

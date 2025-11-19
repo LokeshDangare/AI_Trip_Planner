@@ -2,8 +2,11 @@ llm:
   openai:
     provider: "openai"
     model_name: "o4-mini"
-  groq:
-    provider: "groq"
-    model_name: "llama-3.3-70b-versatile" 
+  # groq:
+  #   provider: "groq"
+  #   model_name: "llama-3.3-70b-versatile" 
+  genai:
+    provider: "genai"
+    model_name: "gemini-2.5-flash"
 
     
